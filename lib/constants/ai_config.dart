@@ -11,7 +11,7 @@ class AIConfig {
   static String get geminiApiKey => dotenv.get('GEMINI_API_KEY', fallback: '');
 
   // Model configurations
-  static const String geminiModel = 'gemini-flash-latest';
+  static const String geminiModel = 'gemini-2.5-flash-lite'; // Lightweight, fast model compatible with v1 API
   static const int maxTokens = 8192; // Increased for longer itineraries
   static const double temperature = 0.7;
 
