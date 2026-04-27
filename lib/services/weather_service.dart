@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class WeatherData {
   final double temperature;
@@ -70,7 +71,8 @@ class ForecastData {
 
 class WeatherService {
   // OpenWeatherMap API - Free tier: 60 calls/minute, 1,000,000 calls/month
-  static const String _apiKey = '49d29d5e3cfe1c6cc60eafea8f172fa2';
+  // API key loaded from environment variables
+  static String get _apiKey => dotenv.get('OPENWEATHER_API_KEY', fallback: '');
   static const String _baseUrl = 'https://api.openweathermap.org/data/2.5';
 
   // Singleton pattern

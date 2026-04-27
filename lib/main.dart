@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'providers/trip_provider.dart';
 import 'providers/auth_provider.dart';
 import 'services/storage_service.dart';
@@ -22,6 +23,15 @@ import 'constants/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables
+  try {
+    await dotenv.load(fileName: ".env");
+    print('✅ Environment variables loaded successfully');
+  } catch (e) {
+    print('⚠️  Warning: Could not load .env file: $e');
+    print('   Make sure to create a .env file with your API keys');
+  }
 
   // Initialize storage service
   await StorageService().init();

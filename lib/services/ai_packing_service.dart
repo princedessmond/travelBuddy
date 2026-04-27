@@ -1,9 +1,10 @@
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'dart:convert';
 
 class AIPackingService {
-  // TODO: Replace with your Anthropic API key from https://console.anthropic.com/
-  static const String _apiKey = 'YOUR_ANTHROPIC_API_KEY_HERE';
+  // Anthropic API key loaded from environment variables
+  static String get _apiKey => dotenv.get('ANTHROPIC_API_KEY', fallback: '');
   static const String _apiUrl = 'https://api.anthropic.com/v1/messages';
 
   // Smart packing suggestions using Claude AI

@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class CurrencyService {
   // ExchangeRate-API with API Key
   // Free tier: 1,500 requests/month
-  static const String _apiKey = '92c416428a4adcdab94e6ac5';
-  static const String _baseUrl = 'https://v6.exchangerate-api.com/v6/$_apiKey/latest';
+  // API key loaded from environment variables
+  static String get _apiKey => dotenv.get('EXCHANGE_RATE_API_KEY', fallback: '');
+  static String get _baseUrl => 'https://v6.exchangerate-api.com/v6/$_apiKey/latest';
 
   // Singleton pattern
   static final CurrencyService _instance = CurrencyService._internal();

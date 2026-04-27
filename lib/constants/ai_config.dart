@@ -1,13 +1,14 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 /// AI Configuration for Travel Companion App
 ///
 /// This file contains API keys and configuration for AI services.
-/// Note: In production, API keys should be stored in environment variables
-/// or secure key management services, not hardcoded in source code.
+/// API keys are now loaded from environment variables (.env file)
 
 class AIConfig {
   // Google Gemini API Key
   // Get your free API key from: https://makersuite.google.com/app/apikey
-  static const String geminiApiKey = 'YOUR_GEMINI_API_KEY_HERE';
+  static String get geminiApiKey => dotenv.get('GEMINI_API_KEY', fallback: '');
 
   // Model configurations
   static const String geminiModel = 'gemini-flash-latest';
